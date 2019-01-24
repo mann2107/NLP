@@ -1,0 +1,114 @@
+slots:
+  location:
+    type: text
+  cuisine:
+    type: text
+  price_range:
+    type: text
+  email_id:
+    type: text
+  restaurant_details:
+    type: text
+  valid_res:
+    type: bool
+
+entities:
+- location
+- cuisine
+- price_range
+- email_id
+- restaurant_details
+- valid_res
+
+intents:
+ - greet
+ - affirm
+ - deny
+ - goodbye
+ - thankyou
+ - restaurant_search
+ - send_email
+ - mail_sent
+ - failure
+ - repeat
+
+
+templates:
+  utter_greet:
+    - "hey there! How may i help you"
+    - "Hi, How can I help you!"
+    - "Hey, How is it going. How May I help you Today"
+  utter_goodbye:
+    - "goodbye"
+    - "Bye-bye"
+    - "See you soon :)"
+  utter_default:
+    - "default message"
+  utter_ask_cuisine: 
+    - text: "what kind of cuisine would you like?"
+      buttons:
+      - title: "Chinese"
+        payload: "Chinese"
+      - title: "Italian"
+        payload: "Italian"
+      - title: "Mexican"
+        payload: "Mexican"
+      - title: "American"
+        payload: "American"
+      - title: "South Indian"
+        payload: "South Indian"
+      - title: "North Indian"
+        payload: "North Indian"
+  utter_ask_price_range: 
+    - text: "what is the price range for two people that you are looking at?"
+      buttons:
+      - title: "Less than Rs. 300"
+        payload: "Less than Rs. 300"
+      - title: "Rs. 300 to 700"
+        payload: "Rs. 300 to 700"
+      - title: "More than 700"
+        payload: "More than 700"
+  utter_ask_howcanhelp:
+    - "how can I help you?"
+    - "how can I assist you?"
+  utter_deny:
+    - "Sorry we do not operate in this City :( Would like to search in any other place?"
+    - "We don't have information in that area. Any other place in your mind?"
+  utter_ask_location:
+    - "In what location?"
+    - "Where?"
+    - "Any specific location?"
+  utter_affirm:
+    - "Would like us to send an e-mail with the restaurant details?"
+    - "Would you like an e-mail with the details?"
+  utter_ask_email_id:
+    - "What's your e-mail id?"
+    - "Please provide your e-mail id below"
+  utter_mail_sent:
+    - "The details has been mailed to you."
+    - "Search result will be in your mailbox shortly."  
+  utter_failure:
+    - "I think there is something wrong down there. Please come back in a while."
+    - "System is down. Let me fix it. Please give me 5 min."  
+  utter_repeat:
+    - "I dont't understand that. Can you rephrase?"
+    - "Ummm, not getting you, please elaborate."    
+    
+
+actions:
+- utter_greet
+- utter_goodbye
+- utter_default
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_price_range
+- utter_ask_cuisine
+- actions.ActionSearchRestaurantValidity
+- actions.ActionSearchRestaurants
+- actions.ActionSendEmail
+- utter_affirm
+- utter_deny
+- utter_ask_email_id
+- utter_mail_sent
+- utter_failure
+- utter_repeat

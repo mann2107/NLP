@@ -1,0 +1,135 @@
+action_factory: null
+action_names:
+- utter_greet
+- utter_goodbye
+- utter_default
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_price_range
+- utter_ask_cuisine
+- action_validity
+- action_restaurant
+- action_email
+- utter_affirm
+- utter_deny
+- utter_ask_email_id
+- utter_mail_sent
+- utter_failure
+- utter_repeat
+actions:
+- utter_greet
+- utter_goodbye
+- utter_default
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_price_range
+- utter_ask_cuisine
+- actions.ActionSearchRestaurantValidity
+- actions.ActionSearchRestaurants
+- actions.ActionSendEmail
+- utter_affirm
+- utter_deny
+- utter_ask_email_id
+- utter_mail_sent
+- utter_failure
+- utter_repeat
+config:
+  store_entities_as_slots: true
+entities:
+- location
+- cuisine
+- price_range
+- email_id
+- restaurant_details
+- valid_res
+intents:
+- greet
+- affirm
+- deny
+- goodbye
+- thankyou
+- restaurant_search
+- send_email
+- mail_sent
+- failure
+- repeat
+slots:
+  cuisine:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  email_id:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  location:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  price_range:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  restaurant_details:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  valid_res:
+    initial_value: null
+    type: rasa_core.slots.BooleanSlot
+templates:
+  utter_affirm:
+  - text: Would like us to send an e-mail with the restaurant details?
+  - text: Would you like an e-mail with the details?
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Italian
+      title: Italian
+    - payload: Mexican
+      title: Mexican
+    - payload: American
+      title: American
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North Indian
+    text: what kind of cuisine would you like?
+  utter_ask_email_id:
+  - text: What's your e-mail id?
+  - text: Please provide your e-mail id below
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  - text: how can I assist you?
+  utter_ask_location:
+  - text: In what location?
+  - text: Where?
+  - text: Any specific location?
+  utter_ask_price_range:
+  - buttons:
+    - payload: Less than Rs. 300
+      title: Less than Rs. 300
+    - payload: Rs. 300 to 700
+      title: Rs. 300 to 700
+    - payload: More than 700
+      title: More than 700
+    text: what is the price range for two people that you are looking at?
+  utter_default:
+  - text: default message
+  utter_deny:
+  - text: Sorry we do not operate in this City :( Would like to search in any other
+      place?
+  - text: We don't have information in that area. Any other place in your mind?
+  utter_failure:
+  - text: I think there is something wrong down there. Please come back in a while.
+  - text: System is down. Let me fix it. Please give me 5 min.
+  utter_goodbye:
+  - text: goodbye
+  - text: Bye-bye
+  - text: See you soon :)
+  utter_greet:
+  - text: hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today
+  utter_mail_sent:
+  - text: The details has been mailed to you.
+  - text: Search result will be in your mailbox shortly.
+  utter_repeat:
+  - text: I dont't understand that. Can you rephrase?
+  - text: Ummm, not getting you, please elaborate.
